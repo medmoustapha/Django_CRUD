@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title> Articles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome-all.css' %}" />
+</head>
+<body class="container">
+<div class="row">
+        <div class="col-sm-4 col-12">
+                <img src="{% static 'products/b1.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/b2.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/b3.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/b4.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/7.jpg'  %}" height="10%" width="50%">
+        </div>
+        <div class="col-sm-4 col-12" >
+          <center><h1>New | update</h1></center>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit">save</button>
+
+            </form>
+            {% if article %}
+            <a href="{% url 'delete_products' article.title % }">delete</a>
+             {% endif %}
+          </center>
+        </div>
+        <div class="col-sm-4 col-12 text-right">
+                <img src="{% static 'products/1.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/2.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/3.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/4.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/5.jpg'  %}" height="10%" width="50%">
+        </div>
+ </div>
+</body>

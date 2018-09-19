@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title> Articles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome-all.css' %}" />
+</head>
+<body class="container">
+<div class="row">
+        <div class="col-sm-2 col-12">
+                <br> <br> <br>
+                <img src="{% static 'products/b1.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/b2.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/b3.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/b4.jpg'  %}" height="10%" width="50%">
+                <img src="{% static 'products/7.jpg'  %}" height="10%" width="50%">
+        </div>
+        <div class="col-sm-8 col-12" >
+            <center><h1>Liste des articles</h1></center>
+            <b><a href="{% url 'create_products' %}">New product </a></b> 
+            <table border="1" width=50% height=50%>
+              <tr><th>title</th><th>content</th><th>contact</th><th>mail</th><th>Update</th><th>Delete</th></tr>
+               {% for article in articles %}
+              <tr>
+                 <td><h2>{{article.title}}</h2></td>
+                 <td><p>{{article.content}}</p></td>
+                 <td><p><a href="tel:{{article.author.phone}}">{{article.author.phone}} </a></p></td>
+                 <td><p><a href="mailto:{{article.author.email}}">{{article.author.email}} </a></p></td>
+                 <td><a href="{% url 'update_product' article.id %}">update</a></td>
+                 <td><a href="{% url 'delete_product' article.id %}">delete</a></td></tr>
+                 {% endfor%}
+            </table>
+            
+          
+        </div>
+
+         <div class="col-sm-2 col-12 text-right">
+            <br> <br> <br>
+            <img src="{% static 'products/1.jpg'  %}" height="10%" width="50%">
+            <img src="{% static 'products/2.jpg'  %}" height="10%" width="50%">
+            <img src="{% static 'products/3.jpg'  %}" height="10%" width="50%">
+            <img src="{% static 'products/4.jpg'  %}" height="10%" width="50%">
+            <img src="{% static 'products/5.jpg'  %}" height="10%" width="50%">
+    </div> 
+ </div>
+</body>
